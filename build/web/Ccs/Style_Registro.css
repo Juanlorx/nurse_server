@@ -1,0 +1,113 @@
+*{
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0d3b66,#1e6091);
+    padding:30px;
+}
+
+.form-container{
+    background:#fff;
+    width:100%;
+    max-width:450px;
+    padding:40px 30px;
+    border-radius:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+.logo{
+    width:180px;
+    display:block;
+    margin:0 auto 20px;
+}
+
+h2{
+    text-align:center;
+    color:#0d3b66;
+    margin-bottom:25px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-size:14px;
+    font-weight:bold;
+    color:#333;
+}
+
+input,
+select{
+    width:100%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:#0787e9;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:15px;
+    margin-bottom:20px;
+}
+
+.checkbox input{
+    width:auto;
+}
+
+.btn-register{
+    width:100%;
+    padding:12px;
+    background:#1e6091;
+    border:none;
+    border-radius:10px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn-register:hover{
+    background:#0d3b66;
+}
+
+.footer-text{
+    margin-top:15px;
+    text-align:center;
+    font-size:13px;
+}
+
+.footer-text a{
+    color:#1e6091;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+        h1 {
+            margin: 10px 0 25px;
+            color: #0d3b66;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }

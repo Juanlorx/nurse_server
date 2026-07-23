@@ -1,0 +1,139 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* BODY */
+body {
+    background: linear-gradient(135deg, #0d3b66, #1e6091);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+    width: 90%;
+    max-width: 1100px;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* TITULO */
+h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #0d3b66;
+}
+
+/* CONTADOR */
+.contador {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+    font-weight: bold;
+}
+
+/* FORMULARIO */
+.formulario {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.formulario input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: 0.3s;
+}
+
+.formulario .boton-secundario {
+    display: block;
+    grid-column: span 2;
+    padding: 12px;
+    background: #6c757d;
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.formulario input:focus {
+    border-color: #1e6091;
+}
+
+/* BOTON */
+.formulario button {
+    grid-column: span 2;
+    padding: 12px;
+    background: #0d3b66;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.formulario button:hover {
+    background: #144d7a;
+}
+
+/* TABLA */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+/* ENCABEZADO */
+.tabla thead {
+    background: #0d3b66;
+    color: white;
+}
+
+.tabla th, .tabla td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* FILAS */
+.tabla tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+.tabla tr:hover {
+    background: #e6f0ff;
+}
+
+.acciones-superiores {
+    margin-bottom: 16px;
+}
+
+.acciones-superiores a,
+.acciones-tabla a {
+    color: #0d3b66;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.acciones-tabla {
+    white-space: nowrap;
+}
+
+.acciones-tabla a + a {
+    margin-left: 10px;
+}
