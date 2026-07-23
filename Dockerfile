@@ -9,10 +9,9 @@ RUN apt-get update && \
     unzip glassfish-${GLASSFISH_VERSION}.zip -d /opt && \
     rm glassfish-${GLASSFISH_VERSION}.zip
 
-# Copiamos el WAR a la raíz de opt
-COPY dist/Nurse.war /opt/Nurse.war
+# Copiar como ROOT.war dentro de la carpeta autodeploy
+COPY dist/Nurse.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/ROOT.war
 
 EXPOSE 8080
 
-# Iniciamos el dominio, desplegamos forzando contextroot=/ y mantenemos los logs activos
-CMD ["sh", "-c", "${GLASSFISH_HOME}/bin/asadmin start-domain && ${GLASSFISH_HOME}/bin/asadmin deploy --contextroot / --name ROOT /opt/Nurse.war && tail -f ${GLASSFISH_HOME}/glassfish/domains/domain1/logs/server.log"]
+CMD ["/opt/glassfish7/bin/asadmin", "start-domain", "--verbose"]
