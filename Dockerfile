@@ -11,6 +11,6 @@ RUN apt-get update && \
 
 COPY dist/Nurse.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/
 
-EXPOSE 8080 4848
+EXPOSE 8080
 
-CMD ["sh", "-c", "/opt/glassfish7/bin/asadmin start-domain --verbose"]
+CMD ["/opt/glassfish7/bin/asadmin","start-domain","--verbose"]
