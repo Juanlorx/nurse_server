@@ -13,7 +13,6 @@ public class Conexion {
         Connection con = null;
 
         try {
-
             Class.forName(DRIVER);
 
             String host = System.getenv("MYSQLHOST");
@@ -23,29 +22,32 @@ public class Conexion {
             String password;
 
             if (host == null || host.isEmpty()) {
-                // Ejecutando en tu PC (NetBeans)
-                url = "jdbc:mysql://localhost:3306/nurse?useSSL=false&serverTimezone=UTC";
+                // Ejecutando en tu PC (Local / NetBeans)
+                url = "jdbc:mysql://localhost:3306/nurse?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
                 user = "root";
                 password = "";
             } else {
-                // Ejecutando en Railway
+                // Ejecutando en Railway (Red Privada)
                 String port = System.getenv("MYSQLPORT");
                 String db = System.getenv("MYSQLDATABASE");
                 user = System.getenv("MYSQLUSER");
                 password = System.getenv("MYSQLPASSWORD");
 
-                url = "jdbc:mysql://" + host + ":" + port + "/" + db
-                        + "?useSSL=true&serverTimezone=UTC";
+                // CAMBIO AQUÍ: Cambiamos useSSL=true a useSSL=false y agregamos allowPublicKeyRetrieval=true
+                url = "jdbc:mysql://" + host + ":" + port + "/" + db 
+                    + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
             }
 
             con = DriverManager.getConnection(url, user, password);
 
-            System.out.println("✅ Conexión establecida correctamente.");
+            System.out.println("✅ Conexión establecida correctamente a: " + host);
 
         } catch (ClassNotFoundException e) {
-            System.out.println("❌ Driver no encontrado: " + e.getMessage());
+            System.err.println("❌ Driver no encontrado: " + e.getMessage());
+            e.printStackTrace();
         } catch (SQLException e) {
-            System.out.println("❌ Error SQL: " + e.getMessage());
+            System.err.println("❌ Error SQL al conectar: " + e.getMessage());
+            e.printStackTrace();
         }
 
         return con;
