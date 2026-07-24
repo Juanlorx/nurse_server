@@ -1,55 +1,39 @@
-package Conexion;
+package Config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class Conexion {
 
-    private final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    Connection con;
 
-    public Connection getConexion() {
+    public Connection getConexion(){
 
-        Connection con = null;
+        try{
 
-        try {
-            Class.forName(DRIVER);
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String host = System.getenv("MYSQLHOST");
+            String host = System.getenv("DB_HOST");
+            String port = System.getenv("DB_PORT");
+            String database = System.getenv("DB_NAME");
+            String user = System.getenv("DB_USER");
+            String password = System.getenv("DB_PASSWORD");
 
-            String url;
-            String user;
-            String password;
-
-            if (host == null || host.isEmpty()) {
-                // Ejecutando en tu PC (Local / NetBeans)
-                url = "jdbc:mysql://localhost:3306/nurse?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-                user = "root";
-                password = "";
-            } else {
-                // Ejecutando en Railway (Red Privada)
-                String port = System.getenv("MYSQLPORT");
-                String db = System.getenv("MYSQLDATABASE");
-                user = System.getenv("MYSQLUSER");
-                password = System.getenv("MYSQLPASSWORD");
-
-                // CAMBIO AQUÍ: Cambiamos useSSL=true a useSSL=false y agregamos allowPublicKeyRetrieval=true
-                url = "jdbc:mysql://" + host + ":" + port + "/" + db 
+            String url = "jdbc:mysql://" + host + ":" + port + "/" + database
                     + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-            }
 
-            con = DriverManager.getConnection(url, user, password);
+            con = DriverManager.getConnection(url,user,password);
 
-            System.out.println("✅ Conexión establecida correctamente a: " + host);
+            System.out.println("Conectado correctamente");
 
-        } catch (ClassNotFoundException e) {
-            System.err.println("❌ Driver no encontrado: " + e.getMessage());
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.err.println("❌ Error SQL al conectar: " + e.getMessage());
-            e.printStackTrace();
+        }catch(Exception e){
+
+            System.out.println(e);
+
         }
 
         return con;
+
     }
+
 }
