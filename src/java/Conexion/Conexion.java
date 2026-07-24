@@ -24,7 +24,7 @@ public class Conexion {
 
             if (host == null || host.isEmpty()) {
                 // Ejecutando en tu PC (NetBeans)
-                url = "jdbc:mysql://localhost:3306/nurse?useSSL=false&serverTimezone=UTC";
+                url = "jdbc:mysql://localhost:3307/nurse?useSSL=false&serverTimezone=UTC";
                 user = "root";
                 password = "";
             } else {
