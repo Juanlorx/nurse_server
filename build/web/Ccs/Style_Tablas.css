@@ -1,139 +1,475 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+/* ================= RESET ================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
-/* BODY */
-body {
-    background: linear-gradient(135deg, #0d3b66, #1e6091);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 30px;
+
+
+body{
+
+    background:#f4f4f4;
+
 }
 
-/* CONTENEDOR PRINCIPAL */
-.contenedor {
-    width: 90%;
-    max-width: 1100px;
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+
+/* ================= HEADER ================= */
+
+
+.header{
+
+    width:100%;
+
+    height:120px;
+
+    background:#004eb4;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:10px 5%;
+
 }
 
-/* TITULO */
-h2 {
-    text-align: center;
-    margin-bottom: 10px;
-    color: #0d3b66;
+
+
+/* LOGO */
+
+.logo img{
+
+    width:100px;
+
+    height:100px;
+
+    border-radius:50%;
+
 }
 
-/* CONTADOR */
-.contador {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #555;
-    font-weight: bold;
+
+
+/* MENU */
+
+.menu ul{
+
+    display:flex;
+
+    gap:60px;
+
+    list-style:none;
+
 }
 
-/* FORMULARIO */
-.formulario {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-bottom: 20px;
+
+
+.menu a{
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    text-decoration:underline;
+
 }
 
-.formulario input {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    outline: none;
-    transition: 0.3s;
+
+
+/* SESION */
+
+
+.Sesion{
+
+    background:linear-gradient(
+    to right,
+    #004eb4 50%,
+    #e50914 50%
+    );
+
+    border:2px solid black;
+
+    border-radius:40px;
+
+    padding:12px 35px;
+
+    color:white;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
 }
 
-.formulario .boton-secundario {
-    display: block;
-    grid-column: span 2;
-    padding: 12px;
-    background: #6c757d;
-    color: white;
-    border-radius: 10px;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
+
+
+
+
+/* ================= CONTENIDO ================= */
+
+
+.contenedor{
+
+    width:90%;
+
+    margin:40px auto;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+
 }
 
-.formulario input:focus {
-    border-color: #1e6091;
+
+
+.contenedor h1{
+
+    text-align:center;
+
+    color:#004eb4;
+
+    margin-bottom:10px;
+
+    font-size:35px;
+
 }
 
-/* BOTON */
-.formulario button {
-    grid-column: span 2;
-    padding: 12px;
-    background: #0d3b66;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
+
+
+.contenedor h2{
+
+    text-align:center;
+
+    color:#004eb4;
+
+    margin-bottom:25px;
+
 }
 
-.formulario button:hover {
-    background: #144d7a;
+
+
+.contador{
+
+    text-align:center;
+
+    font-size:18px;
+
+    margin-bottom:30px;
+
 }
 
-/* TABLA */
-.tabla {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    overflow: hidden;
-    border-radius: 10px;
+
+
+
+
+/* ================= FORMULARIO ================= */
+
+
+.formulario{
+
+
+    width:500px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    background:#f9fbff;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+
 }
 
-/* ENCABEZADO */
-.tabla thead {
-    background: #0d3b66;
-    color: white;
+
+
+.formulario label{
+
+    font-weight:bold;
+
+    color:#004eb4;
+
 }
 
-.tabla th, .tabla td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+
+
+.formulario input{
+
+
+    width:100%;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    border:1px solid #ccc;
+
+    font-size:16px;
+
 }
 
-/* FILAS */
-.tabla tr:nth-child(even) {
-    background: #f2f2f2;
+
+
+.formulario input:focus{
+
+    outline:none;
+
+    border:2px solid #004eb4;
+
 }
 
-.tabla tr:hover {
-    background: #e6f0ff;
+
+
+
+
+.formulario button{
+
+
+    background:#004eb4;
+
+    color:white;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+
 }
 
-.acciones-superiores {
-    margin-bottom: 16px;
+
+
+.formulario button:hover{
+
+    background:#003580;
+
 }
 
-.acciones-superiores a,
-.acciones-tabla a {
-    color: #0d3b66;
-    font-weight: bold;
-    text-decoration: none;
+
+
+
+.boton-secundario{
+
+
+    background:#777;
+
+    color:white;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
 }
 
-.acciones-tabla {
-    white-space: nowrap;
+
+
+
+
+/* ================= TABLA ================= */
+
+
+.tabla{
+
+
+    width:100%;
+
+    margin-top:40px;
+
+    border-collapse:collapse;
+
+
 }
 
-.acciones-tabla a + a {
-    margin-left: 10px;
+
+
+.tabla th{
+
+
+    background:#004eb4;
+
+    color:white;
+
+    padding:15px;
+
+
+}
+
+
+
+.tabla td{
+
+
+    padding:12px;
+
+    text-align:center;
+
+    border-bottom:1px solid #ddd;
+
+
+}
+
+
+
+.tabla tr:hover{
+
+
+    background:#f1f7ff;
+
+
+}
+
+
+
+
+
+/* ================= BOTONES TABLA ================= */
+
+
+.editar{
+
+
+    background:#ffc107;
+
+    padding:8px 15px;
+
+    border-radius:8px;
+
+    color:black;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+
+.eliminar{
+
+
+    background:#dc3545;
+
+    padding:8px 15px;
+
+    border-radius:8px;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+
+
+
+
+/* ================= FOOTER ================= */
+
+
+footer{
+
+
+    background:#004eb4;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    margin-top:50px;
+
+
+}
+
+
+
+
+
+/* ================= RESPONSIVE ================= */
+
+
+@media(max-width:900px){
+
+
+.header{
+
+
+    flex-direction:column;
+
+    height:auto;
+
+    gap:20px;
+
+
+}
+
+
+
+.menu ul{
+
+
+    flex-direction:column;
+
+    gap:20px;
+
+    text-align:center;
+
+
+}
+
+
+
+.formulario{
+
+
+    width:90%;
+
+
+}
+
+
+
+.tabla{
+
+
+    font-size:13px;
+
+
+}
+
+
 }

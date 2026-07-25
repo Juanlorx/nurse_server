@@ -9,11 +9,12 @@ RUN apt-get update && \
     unzip glassfish-${GLASSFISH_VERSION}.zip -d /opt && \
     rm glassfish-${GLASSFISH_VERSION}.zip
 
-# Copiar el WAR
-COPY dist/Nurse.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/ROOT.war
 
-# Railway usa este puerto
+# Copiar WAR dentro de autodeploy
+COPY dist/Nurse.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/Nurse.war
+
+
 EXPOSE 8080
 
-# Iniciar GlassFish en primer plano
+
 CMD ["/opt/glassfish7/bin/asadmin", "start-domain", "--verbose"]

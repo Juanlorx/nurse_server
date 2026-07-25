@@ -24,7 +24,7 @@
 
     <div class="acciones-superiores">
 
-        <a href="${pageContext.request.contextPath}/Menu.jsp">
+        <a href="${pageContext.request.contextPath}Vista/Menu.jsp">
 
             ← Volver al Menu
 
