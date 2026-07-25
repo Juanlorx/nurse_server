@@ -8,98 +8,79 @@ import java.sql.SQLException;
 public class Conexion {
 
 
-    // Driver MySQL
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
 
-    // ==============================
-    // CONEXIÓN MYSQL RAILWAY
-    // USANDO VARIABLES DE ENTORNO
-    // ==============================
-
-    private static final String URL =
-            "jdbc:mysql://"
-            + System.getenv("DB_HOST")
-            + ":"
-            + System.getenv("DB_PORT")
-            + "/"
-            + System.getenv("DB_NAME")
-            + "?useSSL=false"
-            + "&allowPublicKeyRetrieval=true"
-            + "&serverTimezone=UTC";
-
-
-    private static final String USER =
-            System.getenv("DB_USER");
-
-
-    private static final String PASSWORD =
-            System.getenv("DB_PASSWORD");
+    private static final String HOST = System.getenv("MYSQLHOST");
+    private static final String PORT = System.getenv("MYSQLPORT");
+    private static final String DATABASE = System.getenv("MYSQLDATABASE");
+    private static final String USER = System.getenv("MYSQLUSER");
+    private static final String PASSWORD = System.getenv("MYSQLPASSWORD");
 
 
 
     public static Connection getConexion(){
 
 
-        Connection cn = null;
+        Connection con = null;
 
 
-        try{
+        try {
 
-
-            // Cargar driver MySQL
 
             Class.forName(DRIVER);
 
 
+            String url =
+                    "jdbc:mysql://"
+                    + HOST
+                    + ":"
+                    + PORT
+                    + "/"
+                    + DATABASE
+                    + "?useSSL=false"
+                    + "&allowPublicKeyRetrieval=true"
+                    + "&serverTimezone=UTC";
 
-            // Crear conexión
 
-            cn = DriverManager.getConnection(
-                    URL,
+            System.out.println("MYSQL URL: " + url);
+            System.out.println("MYSQL USER: " + USER);
+
+
+
+            con = DriverManager.getConnection(
+                    url,
                     USER,
                     PASSWORD
             );
 
 
-
-            System.out.println("===============================");
-            System.out.println(" CONEXIÓN EXITOSA MYSQL RAILWAY ");
-            System.out.println("===============================");
-
+            System.out.println("==============================");
+            System.out.println(" MYSQL RAILWAY CONECTADO ");
+            System.out.println("==============================");
 
 
-        }catch(ClassNotFoundException e){
+
+        } catch(ClassNotFoundException e){
 
 
-            System.out.println("ERROR: DRIVER MYSQL NO ENCONTRADO");
-
+            System.out.println("NO ESTA EL DRIVER MYSQL");
             e.printStackTrace();
 
 
 
-        }catch(SQLException e){
+        } catch(SQLException e){
 
 
-            System.out.println("ERROR AL CONECTAR MYSQL RAILWAY");
-
+            System.out.println("ERROR MYSQL RAILWAY");
             e.printStackTrace();
 
-
-
-        }catch(Exception e){
-
-
-            System.out.println("ERROR GENERAL DE CONEXIÓN");
-
-            e.printStackTrace();
 
 
         }
 
 
-        return cn;
-
+        return con;
 
     }
 
