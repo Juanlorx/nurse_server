@@ -10,16 +10,16 @@ RUN apt-get update && \
     rm glassfish-${GLASSFISH_VERSION}.zip
 
 
-# Copiar WAR dentro del contenedor
+# Copiar WAR al contenedor
 COPY dist/Nurse.war /tmp/Nurse.war
 
 
 EXPOSE 8080
 
 
-# Iniciar GlassFish y desplegar WAR
-CMD ["/bin/bash", "-c", "\
+CMD ["/bin/bash","-c","\
 /opt/glassfish7/bin/asadmin start-domain && \
 /opt/glassfish7/bin/asadmin deploy --force=true /tmp/Nurse.war && \
+/opt/glassfish7/bin/asadmin set server-config.network-config.network-listeners.network-listener.http-listener-1.port=$PORT && \
 tail -f /opt/glassfish7/glassfish/domains/domain1/logs/server.log \
 "]
