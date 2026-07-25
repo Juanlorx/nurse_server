@@ -10,11 +10,16 @@ RUN apt-get update && \
     rm glassfish-${GLASSFISH_VERSION}.zip
 
 
-# Copiar WAR dentro de autodeploy
-COPY dist/Nurse.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/Nurse.war
+# Copiar WAR dentro del contenedor
+COPY dist/Nurse.war /tmp/Nurse.war
 
 
 EXPOSE 8080
 
 
-CMD ["/opt/glassfish7/bin/asadmin", "start-domain", "--verbose"]
+# Iniciar GlassFish y desplegar WAR
+CMD ["/bin/bash", "-c", "\
+/opt/glassfish7/bin/asadmin start-domain && \
+/opt/glassfish7/bin/asadmin deploy --force=true /tmp/Nurse.war && \
+tail -f /opt/glassfish7/glassfish/domains/domain1/logs/server.log \
+"]
