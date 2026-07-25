@@ -9,8 +9,9 @@ RUN apt-get update && \
     unzip glassfish-${GLASSFISH_VERSION}.zip -d /opt && \
     rm glassfish-${GLASSFISH_VERSION}.zip
 
-COPY dist/Nurse.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/
+# Copiar como ROOT.war dentro de la carpeta autodeploy
+COPY dist/Nurse.war ${GLASSFISH_HOME}/glassfish/domains/domain1/autodeploy/ROOT.war
 
 EXPOSE 8080
 
-CMD ["/opt/glassfish7/bin/asadmin","start-domain","--verbose"]
+CMD ["/opt/glassfish7/bin/asadmin", "start-domain", "--verbose"]
