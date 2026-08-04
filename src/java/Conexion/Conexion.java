@@ -4,85 +4,30 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class Conexion {
 
-
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    private static final String URL = "jdbc:mysql://localhost:3307/nurse?useSSL=false&serverTimezone=UTC";
+    private static final String USER = "root";
+    private static final String PASSWORD = ""; // Cambia si tu MySQL tiene contraseña
 
-
-    private static final String HOST = System.getenv("MYSQLHOST");
-    private static final String PORT = System.getenv("MYSQLPORT");
-    private static final String DATABASE = System.getenv("MYSQLDATABASE");
-    private static final String USER = System.getenv("MYSQLUSER");
-    private static final String PASSWORD = System.getenv("MYSQLPASSWORD");
-
-
-
-    public static Connection getConexion(){
-
+    public Connection getConexion() {
 
         Connection con = null;
 
-
         try {
-
-
             Class.forName(DRIVER);
 
+            con = DriverManager.getConnection(URL, USER, PASSWORD);
 
-            String url =
-                    "jdbc:mysql://"
-                    + HOST
-                    + ":"
-                    + PORT
-                    + "/"
-                    + DATABASE
-                    + "?useSSL=false"
-                    + "&allowPublicKeyRetrieval=true"
-                    + "&serverTimezone=UTC";
+            System.out.println("✅ Conexión establecida correctamente.");
 
-
-            System.out.println("MYSQL URL: " + url);
-            System.out.println("MYSQL USER: " + USER);
-
-
-
-            con = DriverManager.getConnection(
-                    url,
-                    USER,
-                    PASSWORD
-            );
-
-
-            System.out.println("==============================");
-            System.out.println(" MYSQL RAILWAY CONECTADO ");
-            System.out.println("==============================");
-
-
-
-        } catch(ClassNotFoundException e){
-
-
-            System.out.println("NO ESTA EL DRIVER MYSQL");
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
-
-
-
-        } catch(SQLException e){
-
-
-            System.out.println("ERROR MYSQL RAILWAY");
+        } catch (SQLException e) {
             e.printStackTrace();
-
-
-
         }
 
-
         return con;
-
     }
-
-
 }
