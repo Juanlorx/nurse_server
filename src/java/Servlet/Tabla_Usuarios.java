@@ -74,6 +74,19 @@ public class Tabla_Usuarios extends HttpServlet {
         String modulo = obtenerModulo(request);
         String accion = valor(request, "accion");
 
+        if ("eliminar".equals(accion)) {
+            eliminar(modulo, entero(request, "id"));
+            response.sendRedirect(request.getContextPath() + "/" + obtenerRuta(modulo));
+            return;
+        }
+
+        if ("editar".equals(accion) || "consultar".equals(accion)) {
+            cargarRegistro(request, modulo, entero(request, "id"));
+            cargarListas(request);
+            request.getRequestDispatcher("/Vista/" + obtenerVista(modulo)).forward(request, response);
+            return;
+        }
+
         if ("actualizar".equals(accion)) {
             actualizar(request, modulo);
         } else {
