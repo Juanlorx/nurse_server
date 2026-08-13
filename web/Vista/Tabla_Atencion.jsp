@@ -19,7 +19,6 @@
 
     <form action="${pageContext.request.contextPath}/Tabla_Atencion" method="post" class="formulario">
         <input type="hidden" name="accion" value="${registroEditar != null ? 'actualizar' : 'insertar'}">
-        <input type="number" name="id" placeholder="ID atencion" value="${registroEditar.id_atencion}" ${registroEditar != null ? 'readonly' : ''} required>
         <input type="text" name="descripcion" placeholder="Descripcion" value="${registroEditar.descripcion}" required>
         <button type="submit">${registroEditar != null ? 'Actualizar' : 'Guardar'}</button>
         <c:if test="${registroEditar != null}">
