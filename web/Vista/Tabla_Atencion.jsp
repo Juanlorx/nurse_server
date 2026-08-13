@@ -30,7 +30,6 @@
     <table class="tabla">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Descripcion</th>
                 <th>Acciones</th>
             </tr>
@@ -38,10 +37,8 @@
         <tbody>
             <c:forEach var="a" items="${listaAtenciones}">
                 <tr>
-                    <td>${a.id_atencion}</td>
                     <td>${a.descripcion}</td>
                     <td class="acciones-tabla">
-                        <a href="${pageContext.request.contextPath}/Tabla_Atencion?accion=editar&id=${a.id_atencion}">Editar</a>
                         <a href="${pageContext.request.contextPath}/Tabla_Atencion?accion=eliminar&id=${a.id_atencion}" onclick="return confirm('Desea eliminar esta atencion?')">Eliminar</a>
                     </td>
                 </tr>
